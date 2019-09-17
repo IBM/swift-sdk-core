@@ -17,4 +17,4 @@ npm install -g @semantic-release/changelog --silent
 npm install -g @semantic-release/git --silent
 brew update >/dev/null
 
-npx semantic-release --repository-url https://${GH_TOKEN}@github.com/watson-developer-cloud/restkit --debug
+npx semantic-release --repository-url https://${GH_TOKEN}@github.com/IBM/swift-sdk-core --debug

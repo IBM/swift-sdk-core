@@ -16,7 +16,7 @@
 
 #if os(Linux)
 import XCTest
-import RestKit
+@testable import IBMSwiftSDKCore
 
 class CredentialUtilsTests: XCTestCase {
 

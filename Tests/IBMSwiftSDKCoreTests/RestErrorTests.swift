@@ -15,7 +15,7 @@
  **/
 
 import XCTest
-@testable import RestKit
+@testable import IBMSwiftSDKCore
 
 class RestErrorTests: XCTestCase {
 

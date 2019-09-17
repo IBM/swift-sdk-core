@@ -8,7 +8,7 @@ Before you open an issue, please check if a similar issue already exists or has 
 - [ ] Expected behavior
 - [ ] Actual behavior
 - [ ] Xcode version
-- [ ] RestKit version
+- [ ] IBMSwiftSDKCore version
 - [ ] ios version you are targeting
 
 

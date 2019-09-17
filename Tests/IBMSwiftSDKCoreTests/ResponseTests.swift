@@ -15,7 +15,7 @@
  **/
 
 import XCTest
-import RestKit
+@testable import IBMSwiftSDKCore
 #if canImport(FoundationNetworking)
 import FoundationNetworking
 #endif

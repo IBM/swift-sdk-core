@@ -1,0 +1,588 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		"IBMSwiftSDKCore::IBMSwiftSDKCorePackageTests::ProductTarget" /* IBMSwiftSDKCorePackageTests */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = OBJ_67 /* Build configuration list for PBXAggregateTarget "IBMSwiftSDKCorePackageTests" */;
+			buildPhases = (
+			);
+			dependencies = (
+				OBJ_70 /* PBXTargetDependency */,
+			);
+			name = IBMSwiftSDKCorePackageTests;
+			productName = IBMSwiftSDKCorePackageTests;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		7E25A8D42331490800D3FB48 /* CredentialUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E25A8D32331490800D3FB48 /* CredentialUtils.swift */; };
+		7E25A8DC23314B3B00D3FB48 /* Resources in Resources */ = {isa = PBXBuildFile; fileRef = 7E25A8DA23314A5200D3FB48 /* Resources */; };
+		OBJ_47 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* Authentication.swift */; };
+		OBJ_48 /* CloudPakForDataAuthenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* CloudPakForDataAuthenticator.swift */; };
+		OBJ_49 /* ConfigBasedAuthenticatorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* ConfigBasedAuthenticatorFactory.swift */; };
+		OBJ_50 /* IAMAuthenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* IAMAuthenticator.swift */; };
+		OBJ_51 /* InsecureConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* InsecureConnection.swift */; };
+		OBJ_52 /* JWT.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_15 /* JWT.swift */; };
+		OBJ_53 /* CodableExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_16 /* CodableExtensions.swift */; };
+		OBJ_54 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_17 /* JSON.swift */; };
+		OBJ_55 /* MultipartFormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_18 /* MultipartFormData.swift */; };
+		OBJ_56 /* RestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_19 /* RestError.swift */; };
+		OBJ_57 /* RestRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_20 /* RestRequest.swift */; };
+		OBJ_58 /* RestResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_21 /* RestResponse.swift */; };
+		OBJ_65 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
+		OBJ_76 /* AuthenticationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_24 /* AuthenticationTests.swift */; };
+		OBJ_77 /* CodableExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_25 /* CodableExtensionsTests.swift */; };
+		OBJ_78 /* ConfigBasedAuthenticatorFactoryTests-Linux.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_26 /* ConfigBasedAuthenticatorFactoryTests-Linux.swift */; };
+		OBJ_79 /* CredentialUtilsTests-Linux.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_27 /* CredentialUtilsTests-Linux.swift */; };
+		OBJ_80 /* JSONTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_28 /* JSONTests.swift */; };
+		OBJ_81 /* MockURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_29 /* MockURLProtocol.swift */; };
+		OBJ_82 /* MultiPartFormDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_30 /* MultiPartFormDataTests.swift */; };
+		OBJ_83 /* ResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_31 /* ResponseTests.swift */; };
+		OBJ_84 /* RestErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_32 /* RestErrorTests.swift */; };
+		OBJ_86 /* IBMSwiftSDKCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "IBMSwiftSDKCore::IBMSwiftSDKCore::Product" /* IBMSwiftSDKCore.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7E25A8D2233148F800D3FB48 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "IBMSwiftSDKCore::IBMSwiftSDKCore";
+			remoteInfo = IBMSwiftSDKCore;
+		};
+		7E25A8D52331490800D3FB48 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "IBMSwiftSDKCore::IBMSwiftSDKCoreTests";
+			remoteInfo = IBMSwiftSDKCoreTests;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		7E25A8D32331490800D3FB48 /* CredentialUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CredentialUtils.swift; sourceTree = "<group>"; };
+		7E25A8D923314A5200D3FB48 /* Supporting Files */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "Supporting Files"; path = "Tests/Supporting Files"; sourceTree = "<group>"; };
+		7E25A8DA23314A5200D3FB48 /* Resources */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Resources; path = Tests/Resources; sourceTree = "<group>"; };
+		"IBMSwiftSDKCore::IBMSwiftSDKCore::Product" /* IBMSwiftSDKCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IBMSwiftSDKCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		"IBMSwiftSDKCore::IBMSwiftSDKCoreTests::Product" /* IBMSwiftSDKCoreTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = IBMSwiftSDKCoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		OBJ_10 /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
+		OBJ_11 /* CloudPakForDataAuthenticator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudPakForDataAuthenticator.swift; sourceTree = "<group>"; };
+		OBJ_12 /* ConfigBasedAuthenticatorFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigBasedAuthenticatorFactory.swift; sourceTree = "<group>"; };
+		OBJ_13 /* IAMAuthenticator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAMAuthenticator.swift; sourceTree = "<group>"; };
+		OBJ_14 /* InsecureConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsecureConnection.swift; sourceTree = "<group>"; };
+		OBJ_15 /* JWT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JWT.swift; sourceTree = "<group>"; };
+		OBJ_16 /* CodableExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableExtensions.swift; sourceTree = "<group>"; };
+		OBJ_17 /* JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
+		OBJ_18 /* MultipartFormData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipartFormData.swift; sourceTree = "<group>"; };
+		OBJ_19 /* RestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestError.swift; sourceTree = "<group>"; };
+		OBJ_20 /* RestRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestRequest.swift; sourceTree = "<group>"; };
+		OBJ_21 /* RestResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestResponse.swift; sourceTree = "<group>"; };
+		OBJ_24 /* AuthenticationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationTests.swift; sourceTree = "<group>"; };
+		OBJ_25 /* CodableExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableExtensionsTests.swift; sourceTree = "<group>"; };
+		OBJ_26 /* ConfigBasedAuthenticatorFactoryTests-Linux.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConfigBasedAuthenticatorFactoryTests-Linux.swift"; sourceTree = "<group>"; };
+		OBJ_27 /* CredentialUtilsTests-Linux.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CredentialUtilsTests-Linux.swift"; sourceTree = "<group>"; };
+		OBJ_28 /* JSONTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONTests.swift; sourceTree = "<group>"; };
+		OBJ_29 /* MockURLProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLProtocol.swift; sourceTree = "<group>"; };
+		OBJ_30 /* MultiPartFormDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiPartFormDataTests.swift; sourceTree = "<group>"; };
+		OBJ_31 /* ResponseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseTests.swift; sourceTree = "<group>"; };
+		OBJ_32 /* RestErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestErrorTests.swift; sourceTree = "<group>"; };
+		OBJ_36 /* Docker */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Docker; sourceTree = SOURCE_ROOT; };
+		OBJ_37 /* Scripts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Scripts; sourceTree = SOURCE_ROOT; };
+		OBJ_38 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		OBJ_39 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
+		OBJ_40 /* IBMSwiftSDKCore.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = IBMSwiftSDKCore.podspec; sourceTree = "<group>"; };
+		OBJ_41 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		OBJ_59 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_85 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_86 /* IBMSwiftSDKCore.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		OBJ_22 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				7E25A8DA23314A5200D3FB48 /* Resources */,
+				7E25A8D923314A5200D3FB48 /* Supporting Files */,
+				OBJ_23 /* IBMSwiftSDKCoreTests */,
+			);
+			name = Tests;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_23 /* IBMSwiftSDKCoreTests */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_24 /* AuthenticationTests.swift */,
+				OBJ_25 /* CodableExtensionsTests.swift */,
+				OBJ_26 /* ConfigBasedAuthenticatorFactoryTests-Linux.swift */,
+				OBJ_27 /* CredentialUtilsTests-Linux.swift */,
+				OBJ_28 /* JSONTests.swift */,
+				OBJ_29 /* MockURLProtocol.swift */,
+				OBJ_30 /* MultiPartFormDataTests.swift */,
+				OBJ_31 /* ResponseTests.swift */,
+				OBJ_32 /* RestErrorTests.swift */,
+			);
+			name = IBMSwiftSDKCoreTests;
+			path = Tests/IBMSwiftSDKCoreTests;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_33 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				"IBMSwiftSDKCore::IBMSwiftSDKCore::Product" /* IBMSwiftSDKCore.framework */,
+				"IBMSwiftSDKCore::IBMSwiftSDKCoreTests::Product" /* IBMSwiftSDKCoreTests.xctest */,
+			);
+			name = Products;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		OBJ_5 /*  */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_6 /* Package.swift */,
+				OBJ_7 /* Sources */,
+				OBJ_22 /* Tests */,
+				OBJ_33 /* Products */,
+				OBJ_36 /* Docker */,
+				OBJ_37 /* Scripts */,
+				OBJ_38 /* LICENSE */,
+				OBJ_39 /* CHANGELOG.md */,
+				OBJ_40 /* IBMSwiftSDKCore.podspec */,
+				OBJ_41 /* README.md */,
+			);
+			name = "";
+			sourceTree = "<group>";
+		};
+		OBJ_7 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_8 /* IBMSwiftSDKCore */,
+			);
+			name = Sources;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_8 /* IBMSwiftSDKCore */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_9 /* Authentication */,
+				OBJ_16 /* CodableExtensions.swift */,
+				7E25A8D32331490800D3FB48 /* CredentialUtils.swift */,
+				OBJ_17 /* JSON.swift */,
+				OBJ_18 /* MultipartFormData.swift */,
+				OBJ_19 /* RestError.swift */,
+				OBJ_20 /* RestRequest.swift */,
+				OBJ_21 /* RestResponse.swift */,
+			);
+			name = IBMSwiftSDKCore;
+			path = Sources/IBMSwiftSDKCore;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_9 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_10 /* Authentication.swift */,
+				OBJ_11 /* CloudPakForDataAuthenticator.swift */,
+				OBJ_12 /* ConfigBasedAuthenticatorFactory.swift */,
+				OBJ_13 /* IAMAuthenticator.swift */,
+				OBJ_14 /* InsecureConnection.swift */,
+				OBJ_15 /* JWT.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		"IBMSwiftSDKCore::IBMSwiftSDKCore" /* IBMSwiftSDKCore */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_43 /* Build configuration list for PBXNativeTarget "IBMSwiftSDKCore" */;
+			buildPhases = (
+				OBJ_46 /* Sources */,
+				OBJ_59 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = IBMSwiftSDKCore;
+			productName = IBMSwiftSDKCore;
+			productReference = "IBMSwiftSDKCore::IBMSwiftSDKCore::Product" /* IBMSwiftSDKCore.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		"IBMSwiftSDKCore::IBMSwiftSDKCoreTests" /* IBMSwiftSDKCoreTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_72 /* Build configuration list for PBXNativeTarget "IBMSwiftSDKCoreTests" */;
+			buildPhases = (
+				OBJ_75 /* Sources */,
+				OBJ_85 /* Frameworks */,
+				7E25A8DB23314B3400D3FB48 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				OBJ_87 /* PBXTargetDependency */,
+			);
+			name = IBMSwiftSDKCoreTests;
+			productName = IBMSwiftSDKCoreTests;
+			productReference = "IBMSwiftSDKCore::IBMSwiftSDKCoreTests::Product" /* IBMSwiftSDKCoreTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		"IBMSwiftSDKCore::SwiftPMPackageDescription" /* IBMSwiftSDKCorePackageDescription */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_61 /* Build configuration list for PBXNativeTarget "IBMSwiftSDKCorePackageDescription" */;
+			buildPhases = (
+				OBJ_64 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = IBMSwiftSDKCorePackageDescription;
+			productName = IBMSwiftSDKCorePackageDescription;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		OBJ_1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftMigration = 9999;
+				LastUpgradeCheck = 9999;
+			};
+			buildConfigurationList = OBJ_2 /* Build configuration list for PBXProject "IBMSwiftSDKCore" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				English,
+				en,
+			);
+			mainGroup = OBJ_5 /*  */;
+			productRefGroup = OBJ_33 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				"IBMSwiftSDKCore::IBMSwiftSDKCore" /* IBMSwiftSDKCore */,
+				"IBMSwiftSDKCore::SwiftPMPackageDescription" /* IBMSwiftSDKCorePackageDescription */,
+				"IBMSwiftSDKCore::IBMSwiftSDKCorePackageTests::ProductTarget" /* IBMSwiftSDKCorePackageTests */,
+				"IBMSwiftSDKCore::IBMSwiftSDKCoreTests" /* IBMSwiftSDKCoreTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7E25A8DB23314B3400D3FB48 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7E25A8DC23314B3B00D3FB48 /* Resources in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		OBJ_46 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_47 /* Authentication.swift in Sources */,
+				OBJ_48 /* CloudPakForDataAuthenticator.swift in Sources */,
+				OBJ_49 /* ConfigBasedAuthenticatorFactory.swift in Sources */,
+				OBJ_50 /* IAMAuthenticator.swift in Sources */,
+				OBJ_51 /* InsecureConnection.swift in Sources */,
+				OBJ_52 /* JWT.swift in Sources */,
+				OBJ_53 /* CodableExtensions.swift in Sources */,
+				OBJ_54 /* JSON.swift in Sources */,
+				OBJ_55 /* MultipartFormData.swift in Sources */,
+				OBJ_56 /* RestError.swift in Sources */,
+				OBJ_57 /* RestRequest.swift in Sources */,
+				OBJ_58 /* RestResponse.swift in Sources */,
+				7E25A8D42331490800D3FB48 /* CredentialUtils.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_64 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_65 /* Package.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_75 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_76 /* AuthenticationTests.swift in Sources */,
+				OBJ_77 /* CodableExtensionsTests.swift in Sources */,
+				OBJ_78 /* ConfigBasedAuthenticatorFactoryTests-Linux.swift in Sources */,
+				OBJ_79 /* CredentialUtilsTests-Linux.swift in Sources */,
+				OBJ_80 /* JSONTests.swift in Sources */,
+				OBJ_81 /* MockURLProtocol.swift in Sources */,
+				OBJ_82 /* MultiPartFormDataTests.swift in Sources */,
+				OBJ_83 /* ResponseTests.swift in Sources */,
+				OBJ_84 /* RestErrorTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		OBJ_70 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "IBMSwiftSDKCore::IBMSwiftSDKCoreTests" /* IBMSwiftSDKCoreTests */;
+			targetProxy = 7E25A8D52331490800D3FB48 /* PBXContainerItemProxy */;
+		};
+		OBJ_87 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "IBMSwiftSDKCore::IBMSwiftSDKCore" /* IBMSwiftSDKCore */;
+			targetProxy = 7E25A8D2233148F800D3FB48 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		OBJ_3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_NS_ASSERTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"SWIFT_PACKAGE=1",
+					"DEBUG=1",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_SWIFT_FLAGS = "-DXcode";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) SWIFT_PACKAGE DEBUG";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				USE_HEADERMAP = NO;
+			};
+			name = Debug;
+		};
+		OBJ_4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"SWIFT_PACKAGE=1",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_SWIFT_FLAGS = "-DXcode";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) SWIFT_PACKAGE";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				USE_HEADERMAP = NO;
+			};
+			name = Release;
+		};
+		OBJ_44 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = IBMSwiftSDKCore.xcodeproj/IBMSwiftSDKCore_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = IBMSwiftSDKCore;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_VERSION = 4.0;
+				TARGET_NAME = IBMSwiftSDKCore;
+			};
+			name = Debug;
+		};
+		OBJ_45 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = IBMSwiftSDKCore.xcodeproj/IBMSwiftSDKCore_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = IBMSwiftSDKCore;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_VERSION = 4.0;
+				TARGET_NAME = IBMSwiftSDKCore;
+			};
+			name = Release;
+		};
+		OBJ_62 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LD = /usr/bin/true;
+				OTHER_SWIFT_FLAGS = "-swift-version 4 -I $(TOOLCHAIN_DIR)/usr/lib/swift/pm/4 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		OBJ_63 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LD = /usr/bin/true;
+				OTHER_SWIFT_FLAGS = "-swift-version 4 -I $(TOOLCHAIN_DIR)/usr/lib/swift/pm/4 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+		OBJ_68 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		OBJ_69 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		OBJ_73 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = IBMSwiftSDKCore.xcodeproj/IBMSwiftSDKCoreTests_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @loader_path/../Frameworks @loader_path/Frameworks";
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_VERSION = 4.0;
+				TARGET_NAME = IBMSwiftSDKCoreTests;
+			};
+			name = Debug;
+		};
+		OBJ_74 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = IBMSwiftSDKCore.xcodeproj/IBMSwiftSDKCoreTests_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @loader_path/../Frameworks @loader_path/Frameworks";
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_VERSION = 4.0;
+				TARGET_NAME = IBMSwiftSDKCoreTests;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		OBJ_2 /* Build configuration list for PBXProject "IBMSwiftSDKCore" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_3 /* Debug */,
+				OBJ_4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		OBJ_43 /* Build configuration list for PBXNativeTarget "IBMSwiftSDKCore" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_44 /* Debug */,
+				OBJ_45 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		OBJ_61 /* Build configuration list for PBXNativeTarget "IBMSwiftSDKCorePackageDescription" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_62 /* Debug */,
+				OBJ_63 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		OBJ_67 /* Build configuration list for PBXAggregateTarget "IBMSwiftSDKCorePackageTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_68 /* Debug */,
+				OBJ_69 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		OBJ_72 /* Build configuration list for PBXNativeTarget "IBMSwiftSDKCoreTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_73 /* Debug */,
+				OBJ_74 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = OBJ_1 /* Project object */;
+}

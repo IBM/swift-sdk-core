@@ -83,6 +83,19 @@ public struct CredentialUtils {
         return serviceURL
     }
 
+    static public func getDisableSSLConfig(credentialPrefix: String) -> Bool {
+        guard let credentials = CredentialUtils.getEnvironmentVariables(credentialPrefix: credentialPrefix) else {
+            return false
+        }
+
+        guard let disableSSL = credentials[EnvironmentAuthenticatorVariable.disableSSL.rawValue] else {
+            return false
+        }
+
+        let disableSSLValue: Bool = (disableSSL == "true") ? true : false
+        return disableSSLValue
+    }
+
     static private func extractEnvironmentVariablesFromFile(environmentVariablePrefix: String, file: URL) -> [String: String]? {
         guard let fileLines = try? String(contentsOf: file).components(separatedBy: .newlines) else {
             return nil

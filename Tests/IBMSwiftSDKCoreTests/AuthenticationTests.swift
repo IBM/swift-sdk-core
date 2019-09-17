@@ -17,7 +17,7 @@
 // swiftlint:disable function_body_length force_try force_unwrapping file_length
 
 import XCTest
-import RestKit
+@testable import IBMSwiftSDKCore
 #if canImport(FoundationNetworking)
 import FoundationNetworking
 #endif
@@ -101,12 +101,12 @@ class AuthenticationTests: XCTestCase {
         // 1. Set `IAMAuthentication.token` access level to `internal`
         // 2. Uncomment the code below
         // 3. Add credentials to TestCredentials.swift in Supporting Files folder
-        // 4. Add TestCredentials.swift to the RestKitTests target
+        // 4. Add TestCredentials.swift to the IBMSwiftSDKCoreTests target
 
         // The `private` access level of the properties and functions in `IAMAuthentication` prohibit us from
         // modifying/calling them directly. As a result, this is hard to test properly (particularly token refresh).
         // One alternative would be to make the access level `internal` instead of `private`. Or we might be able to
-        // build a `RestKit` framework and import it using `@testable RestKit` in order to access private members.
+        // build a `IBMSwiftSDKCore` framework and import it using `@testable IBMSwiftSDKCore` in order to access private members.
 
         /**
 
@@ -171,7 +171,7 @@ class AuthenticationTests: XCTestCase {
         // 1. Uncomment the code below
         // 2. Create an CP4D instance and create credentials for the root user
         // 3. Add credentials to TestCredentials.swift in Supporting Files folder
-        // 4. Add TestCredentials.swift to the RestKitTests target
+        // 4. Add TestCredentials.swift to the IBMSwiftSDKCoreTests target
 
         /*
         let expectation = self.expectation(description: "request token")

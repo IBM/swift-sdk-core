@@ -1,4 +1,4 @@
-# NOTE: this is a temporary script to run the RestKit build on the latest snapshot for the 5.1 swift preview
+# NOTE: this is a temporary script to run the IBMSwiftSDKCore build on the latest snapshot for the 5.1 swift preview
 # it will be replaced by the swift 5.1 Docker image once it is made available
 
 wget https://swift.org/builds/swift-5.1-branch/ubuntu1604/swift-5.1-DEVELOPMENT-SNAPSHOT-2019-08-28-a/swift-5.1-DEVELOPMENT-SNAPSHOT-2019-08-28-a-ubuntu16.04.tar.gz

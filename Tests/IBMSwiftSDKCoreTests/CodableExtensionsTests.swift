@@ -17,7 +17,7 @@
 // swiftlint:disable function_body_length force_try force_unwrapping file_length
 
 import XCTest
-@testable import RestKit
+@testable import IBMSwiftSDKCore
 
 class CodableExtensionsTests: XCTestCase {
 

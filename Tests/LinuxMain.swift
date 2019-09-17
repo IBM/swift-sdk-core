@@ -1,6 +1,6 @@
 import XCTest
 
-@testable import RestKitTests
+@testable import IBMSwiftSDKCoreTests
 
 XCTMain([
     testCase(AuthenticationTests.allTests),
