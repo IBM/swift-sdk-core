@@ -44,6 +44,9 @@ public enum RestError {
 
     /// The request failed because the URL was malformed.
     case badURL
+    
+    /// The service URL was nil
+    case noEndpoint
 
     /// Generic HTTP error with a status code and description.
     case http(statusCode: Int?, message: String?, metadata: [String: Any]?)
@@ -70,6 +73,8 @@ extension RestError: LocalizedError {
             return "Failed to add percent encoding to \(path)"
         case .badURL:
             return "Malformed URL"
+        case .noEndpoint:
+            return "No service URL was provided."
         case .http(_, let message, _):
             return message
         case .other(let message, _):
