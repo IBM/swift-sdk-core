@@ -12,7 +12,7 @@ jobs:
       script: ./Scripts/travis/test-Linux.sh "swift-5.0"
     - os: linux
       dist: xenial
-      script: ./Scripts/travis/test-swift-5.1-Linux.sh
+      script: ./Scripts/travis/test-Linux.sh "swift-5.1"
     - os: osx
       script: ./Scripts/travis/test-macOS.sh
       osx_image: xcode10.2
