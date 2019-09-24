@@ -6,6 +6,6 @@ ENV IBM_CREDENTIALS_FILE=$ibm_credentials_file
 ARG git_path
 ARG git_branch
 RUN git clone $git_path --branch=$git_branch
-WORKDIR /restkit
+WORKDIR /swift-sdk-core
 RUN swift build
 CMD swift test

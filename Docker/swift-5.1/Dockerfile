@@ -1,4 +1,4 @@
-FROM swift:5.0.2
+FROM swift:5.1-xenial
 ARG vcap_services
 ENV VCAP_SERVICES=$vcap_services
 ARG ibm_credentials_file
