@@ -47,6 +47,9 @@ public enum RestError {
     
     /// The service URL was nil
     case noEndpoint
+    
+    /// The SSL certificate was untrusted
+    case sslCertificateUntrusted
 
     /// Generic HTTP error with a status code and description.
     case http(statusCode: Int?, message: String?, metadata: [String: Any]?)
@@ -75,6 +78,12 @@ extension RestError: LocalizedError {
             return "Malformed URL"
         case .noEndpoint:
             return "No service URL was provided."
+        case .sslCertificateUntrusted:
+            #if os(Linux)
+            return "If you're trying to call a service on ICP or Cloud Pak for Data, you may not have a valid SSL certificate. Please ensure that you have a valid certificate to make successful requests."
+            #else
+            return "If you're trying to call a service on ICP or Cloud Pak for Data, you may not have a valid SSL certificate. If you need to access the service without setting that up, try using the disableSSLVerification option in your authentication configuration and/or calling the disableSSLVerification() method on your service."
+            #endif
         case .http(_, let message, _):
             return message
         case .other(let message, _):
