@@ -107,6 +107,15 @@ extension RestRequest {
             // create a task to execute the request
             let task = self.session.dataTask(with: urlRequest) { (data, response, error) in
 
+                // handle SSL untrusted errors prior to any HTTP handling
+                // as these errors are NSErrors where repsonse is nil
+                if let error = error as NSError? {
+                    if error.code == NSURLErrorServerCertificateUntrusted {
+                        completionHandler(nil, nil, RestError.sslCertificateUntrusted)
+                        return
+                    }
+                }
+                
                 // ensure there is a valid http response
                 guard let response = response as? HTTPURLResponse else {
                     let error = RestError.noResponse

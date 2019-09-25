@@ -40,6 +40,7 @@ class ResponseTests: XCTestCase {
         ("testErrorHeaders", testErrorHeaders),
         ("testBadURL", testBadURL),
         ("testIAMErrorResponse", testIAMErrorResponse),
+        ("testSSLUntrustedCertificateError", testSSLUntrustedCertificateError),
     ]
 
     // MARK: - Tests
@@ -243,6 +244,36 @@ class ResponseTests: XCTestCase {
         request.responseObject { (_: RestResponse<Document>?, error: RestError?) in
             XCTAssertNotNil(error)
             XCTAssertEqual("Provided API key could not be found", error?.localizedDescription)
+            expectation.fulfill()
+        }
+        waitForExpectations(timeout: 5)
+    }
+    
+    func testSSLUntrustedCertificateError() {
+        MockURLProtocol.requestHandler = { request in
+            let mockSSLError = NSError(
+                domain: NSURLErrorDomain,
+                code: NSURLErrorServerCertificateUntrusted,
+                userInfo: nil
+            )
+            
+            throw mockSSLError
+        }
+        
+        let request = RestRequest(
+            session: mockSession,
+            authenticator: BearerTokenAuthenticator(bearerToken: "whocares"),
+            errorResponseDecoder: errorResponseDecoder,
+            method: "POST",
+            url: "https://whocares.com",
+            headerParameters: [:]
+        )
+        
+        let expectation = self.expectation(description: #function)
+        request.responseObject { (response: RestResponse<JSON>?, error: RestError?) in
+            XCTAssertNil(response)
+            XCTAssertNotNil(error)
+            XCTAssertEqual(error?.localizedDescription, RestError.sslCertificateUntrusted.localizedDescription)
             expectation.fulfill()
         }
         waitForExpectations(timeout: 5)
