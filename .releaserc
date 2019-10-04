@@ -1,0 +1,24 @@
+{
+  "branch": "master",
+  "verifyConditions": [],
+  "tagFormat": "${version}",
+  "prepare": [
+    "@semantic-release/git",
+    {
+      "path": "@semantic-release/exec",
+      "cmd": "bumpversion --new-version ${nextRelease.version} --verbose patch"
+    },
+    {
+      "path": "@semantic-release/exec",
+      "cmd": "sh ./Scripts/generate-binaries.sh"
+    }
+  ],
+  "publish": [
+    {
+      "path": "@semantic-release/github",
+      "assets": [
+        {"path": "IBMSwiftSDKCore.framework.zip", "label": "IBMSwiftSDKCore.framework.zip"}
+      ]
+    }
+  ]
+}
