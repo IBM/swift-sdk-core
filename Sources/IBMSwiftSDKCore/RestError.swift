@@ -44,6 +44,12 @@ public enum RestError {
 
     /// The request failed because the URL was malformed.
     case badURL
+    
+    /// The service URL was nil
+    case noEndpoint
+    
+    /// The SSL certificate was untrusted
+    case sslCertificateUntrusted
 
     /// Generic HTTP error with a status code and description.
     case http(statusCode: Int?, message: String?, metadata: [String: Any]?)
@@ -70,6 +76,14 @@ extension RestError: LocalizedError {
             return "Failed to add percent encoding to \(path)"
         case .badURL:
             return "Malformed URL"
+        case .noEndpoint:
+            return "No service URL was provided."
+        case .sslCertificateUntrusted:
+            #if os(Linux)
+            return "The connection failed because the SSL certificate is not valid. Additionally, self-signed certificates are not supported in the Swift SDK on Linux."
+            #else
+            return "The connection failed because the SSL certificate is not valid. To use a self-signed certificate, call the disableSSLVerification method on your service class."
+            #endif
         case .http(_, let message, _):
             return message
         case .other(let message, _):
