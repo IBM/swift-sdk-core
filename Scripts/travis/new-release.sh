@@ -16,5 +16,8 @@ npm install -g @semantic-release/exec --silent
 npm install -g @semantic-release/changelog --silent
 npm install -g @semantic-release/git --silent
 brew update >/dev/null
+brew outdated carthage || brew upgrade carthage >/dev/null
+
+carthage bootstrap --platform iOS
 
 npx semantic-release --repository-url https://${GH_TOKEN}@github.com/IBM/swift-sdk-core --debug
