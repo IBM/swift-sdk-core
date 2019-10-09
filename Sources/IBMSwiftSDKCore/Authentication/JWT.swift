@@ -26,7 +26,7 @@ public class JWT {
         if parts.count == 3 {
             let base64Data = base64urlToBase64(base64url: String(parts[1]))
             let jwtPayload = Data(base64Encoded: base64Data)
-            if let jwtClaims = try? JSONSerialization.jsonObject(with: jwtPayload!, options: []) as? [String: Any],
+            if let jwtClaims: [String: Any]? = try? JSONSerialization.jsonObject(with: jwtPayload!, options: []) as? [String: Any],
                 let exp = jwtClaims?["exp"] as? TimeInterval {
                 return Date(timeIntervalSince1970: exp)
             }
