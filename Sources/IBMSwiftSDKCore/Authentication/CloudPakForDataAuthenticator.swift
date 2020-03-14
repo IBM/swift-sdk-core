@@ -43,13 +43,21 @@ class CloudPakForDataTokenSource: TokenSource {
                 let jwtExpiration = JWT.getTokenExpiration(token: token)
                 // We want a little buffer to make sure we refresh proactively
                 let buffer = jwtExpiration?.timeIntervalSinceNow ?? 0 * -0.2
+                expireDate = jwtExpiration
                 refreshDate = jwtExpiration?.addingTimeInterval(buffer)
             } else {
                 refreshDate = nil
             }
         }
     }
+    private var expireDate: Date?
     private var refreshDate: Date?
+
+    // Dispatch queue for token refresh.  This is a serial queue (the default), so only one refresh at a time
+    private var refreshQueue = DispatchQueue.init(label: "com.ibm.cloud.swift-sdk-core.token-refresh", qos: .background)
+
+    // Dispatch queue for token fetch.  This is a serial queue (the default), so only one fetch at a time
+    private var fetchQueue = DispatchQueue.init(label: "com.ibm.cloud.swift-sdk-core.token-fetch", qos: .userInitiated)
 
     let urlSuffix = "/v1/preauth/validateAuth"
 
@@ -73,14 +81,34 @@ class CloudPakForDataTokenSource: TokenSource {
     #endif
 
     func getToken(completionHandler: @escaping (String?, RestError?) -> Void) {
-        // request a new access token if the current token is expired
-        guard let refreshDate = refreshDate, refreshDate.timeIntervalSinceNow > 0 else {
-            requestToken(completionHandler: completionHandler)
+        // If we have a token, pass it to the completion handler.
+        if let token = self.token,
+           let expireDate = expireDate, expireDate.timeIntervalSinceNow > 0 {
+            completionHandler(token, nil)
+            if let refreshDate = refreshDate, refreshDate.timeIntervalSinceNow < 0 {
+                refreshQueue.async{ self.refreshToken() }
+            }
+        } else {
+            fetchQueue.async {
+                // Check if token was obtained by an earlier fetch
+                if let token = self.token {
+                    completionHandler(token, nil)
+                } else {
+                    self.requestToken(completionHandler: completionHandler)
+                }
+            }
+        }
+    }
+
+    // request a new access token if the refresh time for the current token is passed
+    func refreshToken() {
+        // If refreshDate is set and still in the future, no refresh needed -- just return
+        if let refreshDate = refreshDate, refreshDate.timeIntervalSinceNow > 0 {
             return
         }
-
-        // use the existing, valid access token
-        completionHandler(token, nil)
+        // This is running in a serial dispatch queue, so update to refreshDate is serialized
+        self.refreshDate = Date(timeIntervalSinceNow: 60) // Update refreshDate to 60 seconds from now
+        requestToken { (_, _) in /* dummy completion handler */ }
     }
 
     internal func errorResponseDecoder(data: Data, response: HTTPURLResponse) -> RestError {

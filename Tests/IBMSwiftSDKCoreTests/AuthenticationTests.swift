@@ -32,6 +32,15 @@ class AuthenticationTests: XCTestCase {
         ("testCP4DTokenSource", testCP4DTokenSource),
     ]
 
+    // Mock URLSession
+    var mockSession: URLSession!
+
+    override func setUp() {
+        let configuration = URLSessionConfiguration.default
+        configuration.protocolClasses = [MockURLProtocol.self]
+        mockSession = URLSession(configuration: configuration)
+    }
+
     internal static func errorResponseDecoder(data: Data, response: HTTPURLResponse) -> RestError {
         let genericMessage = HTTPURLResponse.localizedString(forStatusCode: response.statusCode)
         return RestError.http(statusCode: response.statusCode, message: genericMessage, metadata: nil)
@@ -94,6 +103,37 @@ class AuthenticationTests: XCTestCase {
         cp4d.disableSSLVerification()
         #endif
     }
+
+    /* Test scenario of initial authentication that makes a synchronous token request */
+    func testIAMAuthenticate() {
+        let iamURL = "https://iam.cloud.ibm.com/"
+        let iam = IAMAuthenticator(apiKey: "apikey", url: iamURL)
+
+        // Configure mock
+        MockURLProtocol.requestHandler = { request in
+            // Setup mock result
+            let mockURL = URL.init(string: iamURL)!
+            let expiration = Date().addingTimeInterval(3600) // current date/time plus 1 hour
+            let response = HTTPURLResponse(url: mockURL, statusCode: 200, httpVersion: nil, headerFields: nil)!
+            let data = "{ \"access_token\": \"12345\", \"refresh_token\": \"none\", \"token_type\": \"Bearer\", \"expires_in\": 3600, \"expiration\": \(Int(expiration.timeIntervalSince1970)) }".data(using: .utf8)
+            return (response, data)
+        }
+        iam.tokenSource.session = mockSession
+
+        let expectation = self.expectation(description: #function)
+        iam.authenticate(request: request) { (req, error) in
+            XCTAssertNil(error)
+            guard let req = req else {
+                XCTFail("Expected response not received")
+                return
+            }
+            XCTAssertTrue(req.headerParameters.contains {(k, v) in
+                return k == "Authorization" && v == "Bearer 12345"
+            })
+            expectation.fulfill()
+        }
+        waitForExpectations(timeout: 5)
+     }
 
     func testIAMAuthentication() {
 
