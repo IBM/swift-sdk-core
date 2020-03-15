@@ -11,4 +11,4 @@ If there's anything else that's important and relevant to your pull
 request, mention that information here.
 
 
-Thanks for contributing to the Watson Developer Cloud!
+Thanks for contributing to the IBM Cloud!
