@@ -1,5 +1,5 @@
 set -eu
 
-swiftlint
-swift build
-swift test 
+export VCAP_SERVICES=$(cat Tests/Resources/TestVcapServices.json)
+export IBM_CREDENTIALS_FILE=$(pwd)/ibm-credentials.env
+swift test
