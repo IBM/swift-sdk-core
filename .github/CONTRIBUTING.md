@@ -2,11 +2,16 @@ This document contains information and guidelines about contributing to this pro
 
 # Asking Questions
 
-We don't use GitHub as a support forum. For any usage questions that are not specific to the project itself, please ask on [dW Answers][dw] or [Stack Overflow][stackoverflow]. By doing so, you'll be more likely to quickly solve your problem, and you'll also allow anyone else with the same question to find the answer.
+If you are having problems using this SDK or have a question about IBM Cloud services,
+please ask a question on [Stack Overflow][stackoverflow] or [dW Answers][dw].
+
+[dw]: https://developer.ibm.com/answers/questions/ask/?topics=ibm-cloud
+[stackoverflow]: http://stackoverflow.com/questions/ask?tags=ibm-ibm-cloud
 
 # Reporting Issues
 
-See the [issue template](issue_template.md).
+If you encounter an issue with the project, you are welcome to submit a [bug report](https://github.com/IBM/swift-sdk-core/issues).
+Before that, please search for similar issues. It's possible that someone has already reported the problem.
 
 # Coding Style
 
@@ -24,14 +29,32 @@ to the coding style guidelines.
 
 If you want to contribute to the repository, here's a quick guide:
   1. Fork the repository.
-  2. Copy `Source/SupportingFiles/WatsonCredentialsExample.swift` to `Source/SupportingFiles/WatsonCredentials.swift`.
-  3. Add credentials to `WatsonCredentials.swift` for the services you plan to test.
-  4. Develop and test your code changes.
+  2. Develop and test your code changes.
     * Please respect the original code [style guide][styleguide].
     * Create minimal diffs - disable on save actions like reformat source code or organize imports. If you feel the source code should be reformatted create a separate PR for this change.
     * Check for unnecessary whitespace with `git diff --check` before committing.
-  5. Verify that tests pass successfully. Instructions on running the Swift tests on Linux while on a Mac can be found [here](https://github.com/watson-developer-cloud/swift-sdk/wiki/Running-Swift-Linux-Tests-on-Mac).
-  6. Push to your fork and submit a pull request to the **master** branch.
+  3. Verify that tests pass successfully.
+  4. Push to your fork and submit a pull request to the **master** branch.
+
+## Additional Resources
++ [General GitHub documentation](https://help.github.com/)
++ [GitHub pull request documentation](https://help.github.com/send-pull-requests/)
+
+# Running the Tests
+
+## MacOS
+
+To run tests in Xcode, select the `IBMSwiftSDKCore` scheme and press `cmd-u`.
+
+## Linux
+
+Instructions for testing the Swift SDK Core for Linux on a Mac can be found in [the project wiki][wiki-linux-testing].
+
+[wiki-linux-testing] : https://github.com/IBM/swift-sdk-core/wiki/Testing-the-Swift-SDK-Core-for-Linux-on-a-Mac
+
+# Code Coverage
+
+<Instructions here>
 
 # Developer's Certificate of Origin 1.1
 
@@ -59,13 +82,6 @@ By making a contribution to this project, I certify that:
    maintained indefinitely and may be redistributed consistent with
    this project or the open source license(s) involved.
 
-
-## Additional Resources
-+ [General GitHub documentation](https://help.github.com/)
-+ [GitHub pull request documentation](https://help.github.com/send-pull-requests/)
-
-[dw]: https://developer.ibm.com/answers/questions/ask/?topics=watson
-[stackoverflow]: http://stackoverflow.com/questions/ask?tags=ibm-watson
 
 ---
 

@@ -36,7 +36,7 @@ public enum EnvironmentAuthenticatorType: String {
 
 @available (iOS, unavailable, message: "ConfigBasedAuthenticatorFactory is currently available on Linux only.")
 @available (tvOS, unavailable, message: "ConfigBasedAuthenticatorFactory is currently available on Linux only.")
-@available (iOSMac, unavailable, message: "ConfigBasedAuthenticatorFactory is currently available on Linux only.")
+@available (macOS, unavailable, message: "ConfigBasedAuthenticatorFactory is currently available on Linux only.")
 @available (watchOS, unavailable, message: "ConfigBasedAuthenticatorFactory is currently available on Linux only.")
 public struct ConfigBasedAuthenticatorFactory {
     static public func getAuthenticator(credentialPrefix: String) throws -> Authenticator {
