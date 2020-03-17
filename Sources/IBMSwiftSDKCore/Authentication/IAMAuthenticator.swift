@@ -43,8 +43,15 @@ class IAMTokenSource: TokenSource {
 
     private let apiKey: String
     private var token: String?
+    private var expireDate: Date?
     private var refreshDate: Date?
     private var clientAuthenticator: Authenticator = NoAuthAuthenticator()
+
+    // Dispatch queue for token refresh.  This is a serial queue (the default), so only one refresh at a time
+    private var refreshQueue = DispatchQueue.init(label: "com.ibm.cloud.swift-sdk-core.token-refresh", qos: .background)
+
+    // Dispatch queue for token fetch.  This is a serial queue (the default), so only one fetch at a time
+    private var fetchQueue = DispatchQueue.init(label: "com.ibm.cloud.swift-sdk-core.token-fetch", qos: .userInitiated)
 
     init(apiKey: String, url: String? = nil) {
         self.apiKey = apiKey
@@ -70,28 +77,35 @@ class IAMTokenSource: TokenSource {
     }
 
     func getToken(completionHandler: @escaping (String?, RestError?) -> Void) {
-        // request a new access token if the current token is expired
-        guard let refreshDate = refreshDate, refreshDate.timeIntervalSinceNow > 0 else {
-            requestToken {
-                token, error in
-
-                guard let token = token, error == nil else {
-                    completionHandler(nil, error)
-                    return
-                }
-                self.token = token.accessToken
-                // Compute refreshDate for token
-                let expirationDate = Date(timeIntervalSince1970: Double(token.expiration))
-                // We want a little buffer to make sure we refresh proactively
-                let buffer = expirationDate.timeIntervalSinceNow * -0.2
-                self.refreshDate = expirationDate.addingTimeInterval(buffer)
-                completionHandler(self.token, nil)
+        // If we have a token, pass it to the completion handler.
+        if let token = self.token,
+           let expireDate = expireDate, expireDate.timeIntervalSinceNow > 0 {
+            completionHandler(token, nil)
+            if let refreshDate = refreshDate, refreshDate.timeIntervalSinceNow < 0 {
+                refreshQueue.async{ self.refreshToken() }
             }
+        } else {
+            fetchQueue.async {
+                // Check if token was obtained by an earlier fetch
+                if let token = self.token {
+                    completionHandler(token, nil)
+                } else {
+                    self.requestToken(completionHandler: completionHandler)
+                }
+            }
+        }
+    }
+
+    // request a new access token if the refresh time for the current token is passed
+    func refreshToken() {
+        // If refreshDate is set and still in the future, no refresh needed -- just return
+        if let refreshDate = refreshDate, refreshDate.timeIntervalSinceNow > 0 {
             return
         }
 
-        // use the existing, valid access token
-        completionHandler(self.token, nil)
+        // This is running in a serial dispatch queue, so update to refreshDate is serialized
+        self.refreshDate = Date(timeIntervalSinceNow: 60) // Update refreshDate to 60 seconds from now
+        requestToken { (_, _) in /* dummy completion handler */ }
     }
 
     internal func errorResponseDecoder(data: Data, response: HTTPURLResponse) -> RestError {
@@ -114,7 +128,7 @@ class IAMTokenSource: TokenSource {
         return RestError.http(statusCode: response.statusCode, message: errorMessage, metadata: metadata)
     }
 
-    private func requestToken(completionHandler: @escaping (IAMToken?, RestError?) -> Void) {
+    private func requestToken(completionHandler: @escaping (String?, RestError?) -> Void) {
         var headerParameters = ["Content-Type": "application/x-www-form-urlencoded", "Accept": "application/json"]
         if let headers = headers {
             headerParameters.merge(headers) { (old, _) in old }
@@ -130,11 +144,18 @@ class IAMTokenSource: TokenSource {
             messageBody: form.joined(separator: "&").data(using: .utf8)
         )
         request.responseObject { (response: RestResponse<IAMToken>?, error) in
-            guard let token = response?.result, error == nil else {
+            guard let iamToken = response?.result, error == nil else {
                 completionHandler(nil, error)
                 return
             }
-            completionHandler(token, nil)
+            self.token = iamToken.accessToken
+            // Compute refreshDate for token
+            let expirationDate = Date(timeIntervalSince1970: Double(iamToken.expiration))
+            // We want a little buffer to make sure we refresh proactively
+            let buffer = expirationDate.timeIntervalSinceNow * -0.2
+            self.expireDate = expirationDate
+            self.refreshDate = expirationDate.addingTimeInterval(buffer)
+            completionHandler(self.token, nil)
         }
     }
 }

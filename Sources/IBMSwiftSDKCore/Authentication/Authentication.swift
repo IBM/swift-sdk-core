@@ -127,6 +127,9 @@ public protocol TokenSource {
      */
     var headers: [String: String]? {get set}
 
+    // Declare session to allow unit tests to insert mocks
+    var session: URLSession {get set}
+
     #if !os(Linux)
     /**
      Allow network requests to a server without verification of the server certificate.

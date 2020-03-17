@@ -223,6 +223,8 @@ class ResponseTests: XCTestCase {
     }
 
     func testIAMErrorResponse() {
+        let authenticator = IAMAuthenticator(apiKey: "bogus")
+        authenticator.tokenSource.session = mockSession
         // Configure mock
         MockURLProtocol.requestHandler = { request in
             // Setup mock result
@@ -233,7 +235,7 @@ class ResponseTests: XCTestCase {
 
         let request = RestRequest(
             session: mockSession,
-            authenticator: IAMAuthenticator(apiKey: "bogus"),
+            authenticator: authenticator,
             errorResponseDecoder: errorResponseDecoder,
             method: "POST",
             url: "http://restkit.com/response_tests/test_value_not_found_error",
@@ -248,7 +250,36 @@ class ResponseTests: XCTestCase {
         }
         waitForExpectations(timeout: 5)
     }
-    
+
+    func testCPDErrorResponse() {
+        let authenticator = CloudPakForDataAuthenticator(username: "bogus", password: "bogus", url: "https://127.0.0.1/v1/api/preauth")
+        authenticator.tokenSource.session = mockSession
+         // Configure mock
+        let errorMessage = HTTPURLResponse.localizedString(forStatusCode: 400)
+        MockURLProtocol.requestHandler = { request in
+            // Setup mock result
+            let response = HTTPURLResponse(url: request.url!, statusCode: 400, httpVersion: nil, headerFields: nil)!
+            let data = "{ \"errorCode\": \"CPDIM0415E\", \"errorMessage\": \"\(errorMessage)\" }".data(using: .utf8)
+            return (response, data)
+        }
+        let request = RestRequest(
+            session: mockSession,
+            authenticator: authenticator,
+            errorResponseDecoder: errorResponseDecoder,
+            method: "POST",
+            url: "http://restkit.com/response_tests/test_value_not_found_error",
+            headerParameters: [:]
+        )
+
+        let expectation = self.expectation(description: #function)
+        request.responseObject { (_: RestResponse<Document>?, error: RestError?) in
+            XCTAssertNotNil(error)
+            XCTAssertEqual(errorMessage, error?.localizedDescription)
+            expectation.fulfill()
+        }
+        waitForExpectations(timeout: 5)
+    }
+
     func testSSLUntrustedCertificateError() {
         MockURLProtocol.requestHandler = { request in
             let mockSSLError = NSError(
