@@ -23,6 +23,7 @@
 /* Begin PBXBuildFile section */
 		7E25A8D42331490800D3FB48 /* CredentialUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E25A8D32331490800D3FB48 /* CredentialUtils.swift */; };
 		7E25A8DC23314B3B00D3FB48 /* Resources in Resources */ = {isa = PBXBuildFile; fileRef = 7E25A8DA23314A5200D3FB48 /* Resources */; };
+		CA5CB0C2242666DE00243BBD /* SDKInitializerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5CB0C02426667200243BBD /* SDKInitializerTests.swift */; };
 		OBJ_47 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* Authentication.swift */; };
 		OBJ_48 /* CloudPakForDataAuthenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* CloudPakForDataAuthenticator.swift */; };
 		OBJ_49 /* ConfigBasedAuthenticatorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* ConfigBasedAuthenticatorFactory.swift */; };
@@ -69,6 +70,7 @@
 		7E25A8D32331490800D3FB48 /* CredentialUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CredentialUtils.swift; sourceTree = "<group>"; };
 		7E25A8D923314A5200D3FB48 /* Supporting Files */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "Supporting Files"; path = "Tests/Supporting Files"; sourceTree = "<group>"; };
 		7E25A8DA23314A5200D3FB48 /* Resources */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Resources; path = Tests/Resources; sourceTree = "<group>"; };
+		CA5CB0C02426667200243BBD /* SDKInitializerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDKInitializerTests.swift; sourceTree = "<group>"; };
 		"IBMSwiftSDKCore::IBMSwiftSDKCore::Product" /* IBMSwiftSDKCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IBMSwiftSDKCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"IBMSwiftSDKCore::IBMSwiftSDKCoreTests::Product" /* IBMSwiftSDKCoreTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = IBMSwiftSDKCoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_10 /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 				OBJ_30 /* MultiPartFormDataTests.swift */,
 				OBJ_31 /* ResponseTests.swift */,
 				OBJ_32 /* RestErrorTests.swift */,
+				CA5CB0C02426667200243BBD /* SDKInitializerTests.swift */,
 			);
 			name = IBMSwiftSDKCoreTests;
 			path = Tests/IBMSwiftSDKCoreTests;
@@ -340,6 +343,7 @@
 				OBJ_78 /* ConfigBasedAuthenticatorFactoryTests-Linux.swift in Sources */,
 				OBJ_79 /* CredentialUtilsTests-Linux.swift in Sources */,
 				OBJ_80 /* JSONTests.swift in Sources */,
+				CA5CB0C2242666DE00243BBD /* SDKInitializerTests.swift in Sources */,
 				OBJ_81 /* MockURLProtocol.swift in Sources */,
 				OBJ_82 /* MultiPartFormDataTests.swift in Sources */,
 				OBJ_83 /* ResponseTests.swift in Sources */,
