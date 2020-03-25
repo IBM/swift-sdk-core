@@ -11,4 +11,5 @@ XCTMain([
     testCase(MultiPartFormDataTests.allTests),
     testCase(CredentialUtilsTests.allTests),
     testCase(ConfigBasedAuthenticatorFactoryTests.allTests),
+    testCase(SDKInitializerTests.allTests),
 ])

@@ -6,6 +6,5 @@ popd > /dev/null
 cd $root
 cd ..
 
-carthage bootstrap
 carthage build --no-skip-current
 carthage archive --output IBMSwiftSDKCore.framework.zip
