@@ -1,4 +1,4 @@
-// swift-tools-version:4.0
+// swift-tools-version:5.0
 
 /**
  * (C) Copyright IBM Corp. 2016, 2019.
@@ -20,6 +20,12 @@ import PackageDescription
 
 let package = Package(
     name: "IBMSwiftSDKCore",
+    platforms: [
+           .macOS(.v10_12),
+           .iOS(.v10),
+           .tvOS(.v10),
+           .watchOS(.v3)
+       ],
     products: [
         .library(name: "IBMSwiftSDKCore", targets: ["IBMSwiftSDKCore"]),
     ],
