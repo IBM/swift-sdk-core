@@ -22,6 +22,7 @@ class CredentialUtilsTests: XCTestCase {
 
     static var allTests = [
         ("testGetEnvironmentVariablesFromLocalEnv", testGetEnvironmentVariablesFromLocalEnv),
+        ("testGetConfigPropertiesFromLocalEnv", testGetConfigPropertiesFromLocalEnv),
         ("testGetServiceURLFromLocalEnv", testGetServiceURLFromLocalEnv),
         ("testGetEnvironmentVariablesFromHomeDirectoryEnv", testGetEnvironmentVariablesFromHomeDirectoryEnv),
         ("testGetServiceURLFromHomeDirectoryEnv", testGetServiceURLFromHomeDirectoryEnv),
@@ -40,6 +41,12 @@ class CredentialUtilsTests: XCTestCase {
     SERVICE_1_PASSWORD=hunter2
     SERVICE_1_AUTH_TYPE=basic
     SERVICE_1_SERVICE_URL=http://asdf.com
+    SERVICE_2_AUTH_TYPE=iam
+    SERVICE_2_APIKEY=V4HXmoUtMjohnsnow=KotN
+    SERVICE_2_CLIENT_ID=somefake========id
+    SERVICE_2_CLIENT_SECRET===my-client-secret==
+    SERVICE_2_AUTH_URL=https://iamhost/iam/api=
+    SERVICE_2_URL=service2.com/api
     """.data(using: .utf8)
 
     // MARK: Test helper functions
@@ -72,6 +79,28 @@ class CredentialUtilsTests: XCTestCase {
 
         let result = CredentialUtils.getEnvironmentVariables(credentialPrefix: "SERVICE_1")
         XCTAssertNotNil(result)
+    }
+    
+    func testGetConfigPropertiesFromLocalEnv() {
+        if FileManager.default.createFile(atPath: workingDirectory, contents: mockBasicAuthEnv) == false {
+            XCTFail("Failed to create mock local .env file")
+        }
+
+        let result = CredentialUtils.getEnvironmentVariables(credentialPrefix: "SERVICE_2")
+        XCTAssertNotNil(result)
+        let authType: String? = result!["auth_type"]
+        let apikey: String? = result!["apikey"]
+        let authUrl: String? = result!["auth_url"]
+        let clientId: String? = result!["client_id"]
+        let clientSecret: String? = result!["client_secret"]
+        let serviceUrl: String? = result!["url"]
+        
+        XCTAssertEqual("iam", authType)
+        XCTAssertEqual("V4HXmoUtMjohnsnow=KotN", apikey)
+        XCTAssertEqual("https://iamhost/iam/api=", authUrl)
+        XCTAssertEqual("somefake========id", clientId)
+        XCTAssertEqual("==my-client-secret==", clientSecret)
+        XCTAssertEqual("service2.com/api", serviceUrl)
     }
 
     func testGetServiceURLFromLocalEnv() {
