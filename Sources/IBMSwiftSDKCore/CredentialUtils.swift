@@ -30,12 +30,8 @@ public enum EnvironmentAuthenticatorVariable: String {
     case disableSSL = "auth_disable_ssl"
 }
 
-@available (iOS, unavailable, message: "ConfigBasedAuthenticatorFactory is currently available on Linux only.")
-@available (tvOS, unavailable, message: "ConfigBasedAuthenticatorFactory is currently available on Linux only.")
-@available (macOS, unavailable, message: "ConfigBasedAuthenticatorFactory is currently available on Linux only.")
-@available (watchOS, unavailable, message: "ConfigBasedAuthenticatorFactory is currently available on Linux only.")
+#if os(Linux)
 public struct CredentialUtils {
-    @available(iOS 9.0, *)
     static public func getEnvironmentVariables(credentialPrefix: String) -> [String: String]? {
         let formattedCredentialPrefix: String = credentialPrefix.uppercased()
 
@@ -70,7 +66,6 @@ public struct CredentialUtils {
         return nil
     }
 
-    @available(iOS 9.0, *)
     static public func getServiceURL(credentialPrefix: String) -> String? {
         guard let credentials = CredentialUtils.getEnvironmentVariables(credentialPrefix: credentialPrefix) else {
             return nil
@@ -161,3 +156,4 @@ public struct CredentialUtils {
         return nil
     }
 }
+#endif
