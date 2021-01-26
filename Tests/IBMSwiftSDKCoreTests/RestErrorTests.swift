@@ -31,6 +31,7 @@ class RestErrorTests: XCTestCase {
 
         guard case RestError.http(let statusCode, _, _) = httpError else {
             XCTFail("Expected RestError.http")
+            return
         }
         XCTAssertEqual(statusCode, testStatusCode)
     }
@@ -41,6 +42,7 @@ class RestErrorTests: XCTestCase {
 
         guard case RestError.http(_, let message, _) = httpError else {
             XCTFail("Expected RestError.http")
+            return
         }
         XCTAssertEqual(message, testMessage)
         XCTAssertEqual(httpError.errorDescription, testMessage)
@@ -57,6 +59,7 @@ class RestErrorTests: XCTestCase {
 
         guard case RestError.http(_, _, let metadata) = httpError else {
             XCTFail("Expected RestError.http")
+            return
         }
         XCTAssertEqual(metadata!["key0"] as? Int, 42)
         XCTAssertEqual(metadata!["key1"] as? Bool, true)
