@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name                  = 'IBMSwiftSDKCore'
-  s.version               = '1.1.1'
+  s.version               = '1.1.2'
   s.summary               = 'Networking layer for the IBM Swift SDKs'
   s.license               = { :type => 'Apache License, Version 2.0', :file => 'LICENSE' }
   s.homepage              = 'https://www.ibm.com/cloud'
