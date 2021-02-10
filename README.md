@@ -79,11 +79,11 @@ dependencies: [
 
 ## Contributing
 
-We would love any and all help! If you would like to contribute, please read our [CONTRIBUTING](https://github.com/IBM/swift-sdk-core/blob/master/.github/CONTRIBUTING.md) documentation with information on getting started.
+We would love any and all help! If you would like to contribute, please read our [CONTRIBUTING](https://github.com/IBM/swift-sdk-core/blob/main/.github/CONTRIBUTING.md) documentation with information on getting started.
 
 ## License
 
 This library is licensed under Apache 2.0. Full license text is
-available in [LICENSE](https://github.com/IBM/swift-sdk-core/blob/master/LICENSE).
+available in [LICENSE](https://github.com/IBM/swift-sdk-core/blob/main/LICENSE).
 
 This SDK is intended for use with an Apple iOS product and intended to be used in conjunction with officially licensed Apple development tools.
