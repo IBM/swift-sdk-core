@@ -34,7 +34,7 @@ If you want to contribute to the repository, here's a quick guide:
     * Create minimal diffs - disable on save actions like reformat source code or organize imports. If you feel the source code should be reformatted create a separate PR for this change.
     * Check for unnecessary whitespace with `git diff --check` before committing.
   3. Verify that tests pass successfully.
-  4. Push to your fork and submit a pull request to the **master** branch.
+  4. Push to your fork and submit a pull request to the **main** branch.
 
 ## Additional Resources
 + [General GitHub documentation](https://help.github.com/)
