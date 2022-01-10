@@ -47,9 +47,27 @@ public extension KeyedEncodingContainer where Key == DynamicKeys {
             try self.encode(value, forKey: codingKey)
         }
     }
+    
+    /// Encode additional properties.
+    mutating func encode(_ additionalProperties: [String: [String]]) throws {
+        try additionalProperties.forEach { key, value in
+            guard let codingKey = DynamicKeys(stringValue: key) else {
+                let description = "Cannot construct CodingKey for \(key)"
+                let context = EncodingError.Context(codingPath: codingPath, debugDescription: description)
+                throw EncodingError.invalidValue(key, context)
+            }
+            try self.encode(value, forKey: codingKey)
+        }
+    }
 
     /// Encode additional properties if they are not nil.
     mutating func encodeIfPresent(_ additionalProperties: [String: JSON]?) throws {
+        guard let additionalProperties = additionalProperties else { return }
+        try encode(additionalProperties)
+    }
+    
+    /// Encode additional properties if they are not nil.
+    mutating func encodeIfPresent(_ additionalProperties: [String: [String]]?) throws {
         guard let additionalProperties = additionalProperties else { return }
         try encode(additionalProperties)
     }
@@ -71,6 +89,18 @@ public extension KeyedDecodingContainer where Key == DynamicKeys {
             throw DecodingError.dataCorrupted(context)
         }
         return object
+    }
+    
+    /// Decode additional properties.
+    func decode(_ type: [String: [String]].Type, excluding keys: [CodingKey]) throws -> [String: [String]] {
+        var retval: [String: [String]] = [:]
+        try self.allKeys.forEach { key in
+            if !keys.contains(where: { $0.stringValue == key.stringValue}) {
+                let value = try self.decode([String].self, forKey: key)
+                retval[key.stringValue] = value
+            }
+        }
+        return retval
     }
 
 }
