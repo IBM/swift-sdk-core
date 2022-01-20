@@ -33,15 +33,19 @@ class CodableExtensionsTests: XCTestCase {
         ("testEncodeMetadata", testEncodeMetadata),
         ("testEncodeCustom", testEncodeCustom),
         ("testEncodeAdditionalProperties", testEncodeAdditionalProperties),
+        ("testEncodeAdditionalPropertiesStringArray", testEncodeAdditionalPropertiesStringArray),
         ("testEncodeOptional", testEncodeOptional),
         ("testEncodeOptionalEmpty", testEncodeOptionalEmpty),
+        ("testEncodeEmptyStringArray", testEncodeEmptyStringArray),
         ("testEncodeOptionalNil", testEncodeOptionalNil),
         ("testDecodeSimpleModel", testDecodeSimpleModel),
         ("testDecodeMetadata", testDecodeMetadata),
         ("testDecodeCustom", testDecodeCustom),
         ("testDecodeAdditionalProperties", testDecodeAdditionalProperties),
+        ("testDecodeAdditionalPropertiesStringArray", testDecodeAdditionalPropertiesStringArray),
         ("testDecodeOptional", testDecodeOptional),
         ("testDecodeOptionalEmpty", testDecodeOptionalEmpty),
+        ("testDecodeEmptyStringArray", testDecodeEmptyStringArray),
         ("testDecodeOptionalNil", testDecodeOptionalNil),
     ]
 
@@ -183,6 +187,29 @@ class CodableExtensionsTests: XCTestCase {
             expected.components(separatedBy: .whitespacesAndNewlines).joined().sorted()
         )
     }
+    
+    func testEncodeAdditionalPropertiesStringArray() {
+        let additionalProperties: [String: [String]] = [
+            "randomKey" : ["Kimestu No Yaiba", "Boku No Hero Academia"],
+            "unknownKey" : ["Hagane no Renkinjutsushi", "Meido in Abisu"],
+        ]
+        let model = ServiceModelStringArray(name: "name", additionalProperties: additionalProperties)
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = .prettyPrinted
+        let data = try! encoder.encode(model)
+        let json = String(data: data, encoding: .utf8)!
+        let expected = """
+            {
+              "name" : "name",
+              "randomKey" : ["Kimestu No Yaiba", "Boku No Hero Academia"],
+              "unknownKey" : ["Hagane no Renkinjutsushi", "Meido in Abisu"]
+            }
+            """
+        XCTAssertEqual(
+            json.components(separatedBy: .whitespacesAndNewlines).joined().sorted(),
+            expected.components(separatedBy: .whitespacesAndNewlines).joined().sorted()
+        )
+    }
 
     func testEncodeOptional() {
         let metadata: [String: JSON] = [
@@ -249,6 +276,15 @@ class CodableExtensionsTests: XCTestCase {
 
     func testEncodeOptionalEmpty() {
         let model = ServiceModelOptional(name: "", metadata: nil, additionalProperties: [:])
+        let encoder = JSONEncoder()
+        let data = try! encoder.encode(model)
+        let json = String(data: data, encoding: .utf8)!
+        let expected = "{\"name\":\"\"}"
+        XCTAssertEqual(json.sorted(), expected.sorted())
+    }
+    
+    func testEncodeEmptyStringArray() {
+        let model = ServiceModelStringArray(name: "", additionalProperties: [:])
         let encoder = JSONEncoder()
         let data = try! encoder.encode(model)
         let json = String(data: data, encoding: .utf8)!
@@ -372,6 +408,21 @@ class CodableExtensionsTests: XCTestCase {
         XCTAssertEqual(model.additionalProperties["array"], .array([.int(1), .int(2), .int(3)]))
         XCTAssertEqual(model.additionalProperties["object"], .object(["x": .int(1)]))
     }
+    
+    func testDecodeAdditionalPropertiesStringArray() {
+        let json = """
+            {
+              "name" : "name",
+              "randomKey" : ["Kimestu No Yaiba", "Boku No Hero Academia"],
+              "unknownKey" : ["Hagane no Renkinjutsushi", "Meido in Abisu"]
+            }
+            """
+        let data = json.data(using: .utf8)!
+        let model = try! JSONDecoder().decode(ServiceModelStringArray.self, from: data)
+        XCTAssertEqual(model.name, "name")
+        XCTAssertEqual(model.additionalProperties["randomKey"], ["Kimestu No Yaiba", "Boku No Hero Academia"])
+        XCTAssertEqual(model.additionalProperties["unknownKey"], ["Hagane no Renkinjutsushi", "Meido in Abisu"])
+    }
 
     func testDecodeOptional() {
         let json = """
@@ -422,6 +473,14 @@ class CodableExtensionsTests: XCTestCase {
         let model = try! JSONDecoder().decode(ServiceModelOptional.self, from: data)
         XCTAssertEqual(model.name, "")
         XCTAssertNil(model.metadata)
+        XCTAssertTrue(model.additionalProperties.isEmpty)
+    }
+    
+    func testDecodeEmptyStringArray() {
+        let json = "{\"name\":\"\"}"
+        let data = json.data(using: .utf8)!
+        let model = try! JSONDecoder().decode(ServiceModelStringArray.self, from: data)
+        XCTAssertEqual(model.name, "")
         XCTAssertTrue(model.additionalProperties.isEmpty)
     }
 
@@ -483,6 +542,39 @@ private struct ServiceModel: Codable {
         var dynamic = encoder.container(keyedBy: DynamicKeys.self)
         try container.encode(name, forKey: .name)
         try container.encode(metadata, forKey: .metadata)
+        try dynamic.encode(additionalProperties)
+    }
+}
+
+//===----------------------------------------------------------------------===//
+// ServiceModelStringArray
+//===----------------------------------------------------------------------===//
+
+private struct ServiceModelStringArray: Codable {
+    let name: String
+    let additionalProperties: [String: [String]]
+
+    init(name: String, additionalProperties: [String: [String]]) {
+        self.name = name
+        self.additionalProperties = additionalProperties
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case name = "name"
+        static let allValues = [name]
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        let dynamic = try decoder.container(keyedBy: DynamicKeys.self)
+        name = try container.decode(String.self, forKey: .name)
+        additionalProperties = try dynamic.decode([String: [String]].self, excluding: CodingKeys.allValues)
+    }
+
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        var dynamic = encoder.container(keyedBy: DynamicKeys.self)
+        try container.encode(name, forKey: .name)
         try dynamic.encode(additionalProperties)
     }
 }
