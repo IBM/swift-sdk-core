@@ -11,7 +11,6 @@
 It provides the networking layer used by the Swift SDK to communicate between your Swift app and IBM Services.
 For more information on IBM Watson services, visit the [IBM Watson homepage](https://www.ibm.com/watson/). Currently, it is only used by the IBM Watson Swift SDK, but it will be used by other IBM Cloud SDKs in the future.
 
-
 ## Requirements
 
 - Xcode 9.3+
@@ -36,7 +35,7 @@ If your project does not yet have a Podfile, use the `pod init` command in the r
 use_frameworks!
 
 target 'MyApp' do
-    pod 'IBMSwiftSDKCore', '~> 1.1.2'
+    pod 'IBMSwiftSDKCore', '~> 1.1.3'
 end
 ```
 
@@ -56,7 +55,7 @@ $ brew install carthage
 If your project does not have a Cartfile yet, use the `touch Cartfile` command in the root directory of your project. To install IBMSwiftSDKCore using Carthage, add the following to your Cartfile.
 
 ```
-github "IBM/swift-sdk-core" ~> 1.1.2
+github "IBM/swift-sdk-core" ~> 1.1.3
 ```
 
 Then run the following command to build the dependencies and frameworks:
@@ -73,7 +72,7 @@ Add the following to your `Package.swift` file to identify IBMSwiftSDKCore as a 
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/IBM/swift-sdk-core", from: "1.1.2")
+    .package(url: "https://github.com/IBM/swift-sdk-core", from: "1.1.3")
 ]
 ```
 
