@@ -6,7 +6,6 @@ Pod::Spec.new do |s|
   s.license               = { :type => 'Apache License, Version 2.0', :file => 'LICENSE' }
   s.homepage              = 'https://www.ibm.com/cloud'
   s.authors               = { 'Jeff Arn' => 'jtarn@us.ibm.com',
-                              'Mike Kistler'    => 'mkistler@us.ibm.com',
                               'Angelo Paparazzi' => 'angelo.paparazzi@ibm.com' }
 
   s.cocoapods_version     = '>= 1.7.0'
